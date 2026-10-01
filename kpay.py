@@ -6,13 +6,13 @@ from io import BytesIO
 
 # --- Page Setup ---
 st.set_page_config(
-    page_title="GPay Simulator",
+    page_title="Pocket Pay Simulator",
     page_icon="🔵",
     layout="centered",
     initial_sidebar_state="collapsed",
 )
 
-# --- Google Pay Style CSS ---
+# --- Pocket Pay Style CSS ---
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
@@ -25,12 +25,12 @@ st.markdown("""
     .block-container { max-width: 440px; padding: 1rem 1rem 3rem 1rem; }
     #MainMenu, header, footer { visibility: hidden; }
 
-    .gpay-top-bar {
+    .pocketpay-top-bar {
         display: flex; align-items: center; justify-content: space-between;
         background: #ffffff; border: 1px solid #e1e7ee; border-radius: 28px;
         padding: 8px 16px; margin-bottom: 1.2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
     }
-    .gpay-logo { font-weight: 700; font-size: 17px; letter-spacing: -0.5px; color: #1f1f1f;
+    .pocketpay-logo { font-weight: 700; font-size: 17px; letter-spacing: -0.5px; color: #1f1f1f;
         display: flex; align-items: center; gap: 6px; }
     .g-blue { color: #4285F4; } .g-red { color: #EA4335; }
     .g-yellow { color: #FBBC04; } .g-green { color: #34A853; }
@@ -236,7 +236,7 @@ def scratch_card():
     user["rewards_won"] = round(user.get("rewards_won", 0) + win_amt, 2)
     user["scratch_cards_available"] -= 1
     user["transactions"].insert(0, {
-        "id": new_txn_id("RW"), "type": "CREDIT", "title": "Google Pay Cashback",
+        "id": new_txn_id("RW"), "type": "CREDIT", "title": "Pocket Pay Cashback",
         "amount": win_amt, "date": datetime.datetime.now().strftime("%d %b, %I:%M %p"),
         "status": "Success",
     })
@@ -263,9 +263,9 @@ user = get_user()
 
 # --- Top Navigation Bar ---
 st.markdown(f"""
-    <div class="gpay-top-bar">
-        <div class="gpay-logo">
-            <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span>&nbsp;Pay
+    <div class="pocketpay-top-bar">
+        <div class="pocketpay-logo">
+            <span class="g-blue">P</span><span class="g-red">o</span><span class="g-yellow">c</span><span class="g-blue">k</span><span class="g-green">e</span><span class="g-red">t</span>&nbsp;Pay
         </div>
         <div style="font-size: 13px; font-weight: 600; color: #5f6368;">
             👤 {user['name'].split()[0]}
